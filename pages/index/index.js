@@ -4,7 +4,11 @@ const app = getApp()
 
 Page({
   data: {
-   
+    dawn: false,
+    daytime:true,
+    dusk: false,
+    night: false,
+    bgcolor: "#b2b2b2"
   },
   //事件处理函数
   bindViewTap: function() {
@@ -13,39 +17,27 @@ Page({
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
+   
+    if (this.data.dawn)
       this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+        bgcolor: "-webkit-linear-gradient(top,rgba(133,149,165,1),rgba(188,204,220,1),rgba(234,206,202,1),rgba(246,182,180,1))"
       })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+    else if (this.data.daytime)
+      this.setData({
+        bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(255,255,255,1)),color-stop(50%,rgba(254,229,102,1)),color-stop(70%,rgba(243, 200, 95,1)),to(rgba(88, 106, 6,1)))"
+      })
+    else if (this.data.dusk)
+      this.setData({
+        bgcolor: time
+      })
+    else if (this.data.night)
+      this.setData({
+        bgcolor: time
+      })
+    else {
+      this.setData({
+        bgcolor: time
       })
     }
-  },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
   }
 })

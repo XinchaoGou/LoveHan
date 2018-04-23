@@ -24,7 +24,7 @@ page {
 .img1, .img2, .img3{
   width:60rpx;
   height:40rpx;
-  background-color: pink;
+  background:-webkit-linear-gradient(bottom,rgba(0,0,0,0.5),rgba(0,0,0,1))
 }
 .section{
   width:300rpx;

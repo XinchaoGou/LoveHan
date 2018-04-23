@@ -1,5 +1,5 @@
 <!--pages/gift/gift.wxml-->
-<view class="container">
+<view class="container" style="background:{{bgcolor}};">
 
   <view class="header-left">
     <view class="section">
