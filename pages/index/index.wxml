@@ -1,0 +1,34 @@
+<!--pages/gift/gift.wxml-->
+<view class="container">
+
+  <view class="header-left">
+    <view class="section">
+      <text>成长值</text>
+      <view class="img1" />
+      <text>036</text>
+    </view>
+    <view class="section">
+      <text>心情值</text>
+      <view class="img2" />
+      <text>049</text>
+    </view>
+    <view class="section">
+      <text>食物量</text>
+      <view class="img3" />
+      <text>050</text>
+    </view>
+  </view>
+
+  <view class="img-right">
+    <view class="block1">1</view>
+    <view class="block2">2</view>
+  </view>
+
+  <view class="footer">
+    <view class="footer1">
+      <input placeholder="快来喂我吧~" auto-focus/>
+    </view>
+    <view class="iconfont">2</view>
+  </view>
+
+</view>

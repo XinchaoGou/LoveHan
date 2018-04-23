@@ -1,0 +1,70 @@
+/* pages/gift/gift.wxss */
+
+page {
+  height: 100%;
+}
+.container {
+  box-sizing: border-box;
+  width:100%;
+  height:100%;
+  padding:40rpx;
+  /* background-image:url("../../images/more/logo.png"); */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position:relative;
+}
+.header-left{
+  float:left;
+  display:flex;
+  width:40%;
+  flex-direction:column;
+  justify-content: space-between;
+  align-items:flex-start;
+}
+.img1, .img2, .img3{
+  width:60rpx;
+  height:40rpx;
+  background-color: pink;
+}
+.section{
+  width:300rpx;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+}
+.img-right{
+  float:right;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-end;
+}
+.block1{
+  width:200rpx;
+  height:60rpx;
+  background-color: pink;
+}
+.block2{
+  margin-top:120rpx;
+  width:280rpx;
+  height:180rpx;
+  background-color: pink;
+}
+.footer{
+  width:90%;
+  box-sizing: border-box;
+  position:absolute;
+  bottom:80rpx;
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+}
+.footer1{
+  background-color: pink;
+}
+
+.iconfont{
+  font-family:'DFPShaoNvW5-GB';
+}
