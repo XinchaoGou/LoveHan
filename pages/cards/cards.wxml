@@ -9,12 +9,11 @@
                     <image src="{{ item.cardUrl }} " catchtap="like" ></image>
                     <view class="card_info">
                         <view class="info_top">
-                            <view class="info_title">红尘陌上</view>
-                            <view class="info_light">🌞</view>
+                            <view class="info_title">{{item.title}}</view>
+                            
                         </view> 
-                        <view class="info_content"> 学生 * 95年 * 天秤座 * 165cm * 成都
-                        </view> 
-                        <view class="info_bottom">🌹🌹🌹🌹🌹</view>
+                      
+                        
                     </view>
                 </view>
             </block>
@@ -25,12 +24,11 @@
                     <image src="{{ item.cardUrl }} "catchtap="like" ></image>
                     <view class="card_info">
                         <view class="info_top">
-                            <view class="info_title">红尘陌上</view>
-                            <view class="info_light">🌞</view>
+                            <view class="info_title">{{item.title}}</view>
+                            
                         </view> 
-                        <view class="info_content"> 学生 * 95年 * 天秤座 * 165cm * 成都
-                        </view> 
-                        <view class="info_bottom">🌹🌹🌹🌹🌹</view>
+                       
+                        
                     </view>
 
                 </view>
@@ -70,23 +68,11 @@
 
       <view class="operate-area">
    
-          <view class="want" bindtap="wantYou"  hidden="{{want_hidden}}">
-                    <view>要</view>
-          </view>
+
 
 
           
-          <view class="inline_block" bindtap="noWantYou" hidden="{{nowant_hidden}}">
-              <view class="want" catchtap="call_phone">
-                        <view >电话</view>
-              </view>
-              <view class="noWant"   >
-                        <view>不要</view>
-              </view>
-              <view class="want" catchtap="send_message">
-                        <view  >短信</view>
-              </view>
-          </view>
+
         </view>
 
 

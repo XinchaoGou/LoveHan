@@ -1,13 +1,10 @@
 // pages/cards/cards.js
-//index.js
-//获取应用实例
+
 var app = getApp();
-// 判断Like哪一张
-var likeOneOrTwo = 0;
 //锁定图片
 var lock = 0;
-
 var allCount = 0;
+var Bmob = require("../../utils/bmob.js");
 
 
 
@@ -18,130 +15,82 @@ var allCount = 0;
 Page({
   data: {
     animationData: {},
-    want_hidden: false,
-    nowant_hidden: true,
-    All: [{
-      cardUrl: 'http://bmob-cdn-18384.b0.upaiyun.com/2018/04/23/c67c84a9408b690c807ecc1dfc5fa40c.jpg',
-      id: 1
-
-    }, {
-      cardUrl: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      id: 2
-
-
-    }, {
-      cardUrl: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-      id: 3
-    },
-
-
-
-
-
-    {
-      cardUrl: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-      id: 4
-    },
-
-    {
-      cardUrl: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      id: 5
-    },
-
-    {
-      cardUrl: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      id: 6
-    },
-    {
-      cardUrl: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      id: 7
-
-
-    },
-
-    {
-      cardUrl: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      id: 8
-
-
-    },
-    {
-      cardUrl: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-      id: 9
-    },
-
-    {
-      cardUrl: '',
-      id: 10
-    },
-    {
-      cardUrl: '',
-      id: 11
-    },
-
-    ]
+    All: [],
   },
 
+  /*
+   * 加载图片
+   */
+  loadingPic: function () {
+    var that = this;
+    var cardArray = new Array();
+    //查询条目数量
+    var Cards = Bmob.Object.extend("Cards");
+    var query = new Bmob.Query(Cards);
+    // 查询所有数据
+    query.find({
+      success: function (results) {
+        console.log("共查询到 " + results.length + " 条记录");
+        // 循环处理查询到的数据
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          var title = object.get('title');
+          var id = object.get('id');
+          var cardUrl = object.get('imgUrl');
+          // var content = object.get('content');
+          // var isLock = object.get('isLock');
 
+          var card = {
+            id: id,
+            title: title,
+            cardUrl: cardUrl,
+            // content : content,
+            // isLock : isLock
+          }
+          cardArray.push(card);
+        }
 
+        // 创建一个临时数组 ,用于加载值(2个)
+        // allCount = that.data.All.length;
+        var temp = new Array();
+        for (let i = 0; i < 2; i++) {
+          var add = cardArray.shift();
+          temp.push(add);
+        }
+        that.setData({
+          All: cardArray,
+          cardInfoList: temp,
 
-  //---------------------------------------------------------------------------
-  // 要和不要
-  wantYou: function () {
-    lock = 1;
-    this.setData({
-      want_hidden: true,
-      nowant_hidden: false,
-      hidden3: true,
-      hidden4: true,
-    })
-
+          ballTop: 62,
+          ballLeft: 76,
+          ballTop2: 62,
+          ballLeft2: 76,
+          index1: 6,
+          index2: 4,
+        })
+      },
+      error: function (error) {
+        console.log("查询失败: " + error.code + " " + error.message);
+      }
+    });
   },
-  noWantYou: function () {
+
+  onLoad: function () {
     var that = this;
 
-    lock = 0;
-    this.setData({
-      want_hidden: false,
-      nowant_hidden: true,
-      hidden3: false,
-      hidden4: false,
+    that.loadingPic();
 
-    })
-
-    if (that.data.cardInfoList[0].id == 10) {
-      if (allCount % 2 == 0) {
-        lock = 1;
-      }
-    }
-    if (that.data.cardInfoList[1].id == 10) {
-      if (allCount % 2 == 1) {
-        lock = 1;
-      }
-    }
-  },
-
-  call_phone: function (e) {
-    console.log(e);
-    //拨打电话
-    wx.makePhoneCall({
-      phoneNumber: '10086',
+    wx.getSystemInfo({
       success: function (res) {
         // success
+        that.setData({
+          screenHeight: res.windowHeight,
+          screenWidth: res.windowWidth,
+        })
+
       }
     })
   },
-
-
-  send_message: function (e) {
-    //没有短信接口
-  },
-  //---------------------------------------------------------------------------
-
-
-
-
-
 
   // 滑动第一张的移动事件
   //pageX,pageY,当前移动点位置
@@ -149,7 +98,8 @@ Page({
   //ballLeft由于是rpx所以*2
 
   touchmove: function (event) {
-    console.log(event)
+    console.log('滑动第一张的移动事件touchmove');
+    // console.log(event)
     let pageX = event.touches[0].pageX;
     let pageY = event.touches[0].pageY;
     // 需要移动的距离;
@@ -166,6 +116,7 @@ Page({
 
   // 第一张移动结束处理动画
   touchend: function (event) {
+    console.log('第一张移动结束处理动画touchend');
     if (lock == 0) {
       if (event.currentTarget.offsetLeft < -110) {
         this.Animation(-500);
@@ -183,9 +134,10 @@ Page({
   //第二张移动事件  
   //pageX,pageY,当前移动点位置
   touchmove2: function (event) {
+    console.log('第二张移动事件  touchmove2');
     let pageX = event.touches[0].pageX;
     let pageY = event.touches[0].pageY;
-    console.log(pageX, pageY);
+    // console.log(pageX, pageY);
     // 需要移动的距离;
     let moveX = this.data.screenWidth * 0.8 * 0.5;
     let moveY = 350 * 0.5;
@@ -201,6 +153,7 @@ Page({
 
   // 第二张移动结束处理动画
   touchend2: function (event) {
+    console.log('第二张移动结束处理动画  touchend2');
     if (lock == 0) {
 
       if (event.currentTarget
@@ -222,6 +175,7 @@ Page({
 
   // 第一张左滑动右滑动动画
   Animation: function (translateXX) {
+    console.log('第一张左滑动右滑动动画  Animation');
 
     // 动画
     var animation = wx.createAnimation({
@@ -243,7 +197,6 @@ Page({
 
     });
     var self = this;
-    likeOneOrTwo = 1;
     setTimeout(function () {
       self.setData({
         ballTop: 62,
@@ -261,7 +214,7 @@ Page({
       }
 
 
-      console.log(self.data.cardInfoList[0].id);
+      // console.log(self.data.cardInfoList[0].id);
       if (self.data.cardInfoList[0].id == allCount - 1) {
         if (allCount % 2 == 0) {
           lock = 1;
@@ -271,7 +224,7 @@ Page({
 
 
 
-      console.log(allCount)
+      // console.log(allCount)
 
 
       //当加载最后一条数据时划出后隐藏自己
@@ -298,6 +251,7 @@ Page({
   },
   // 第二张左滑动右滑动动画
   Animation2: function (translateXX) {
+    console.log('第二张左滑动右滑动动画  Animation2');
     // 动画
     var animation = wx.createAnimation({
       duration: 720,
@@ -317,7 +271,7 @@ Page({
 
 
     var self = this;
-    likeOneOrTwo = 0;
+
     setTimeout(function () {
       self.setData({
         percent1: 100,
@@ -366,6 +320,7 @@ Page({
 
   // 第一张图片不需翻页动画
   AnimationN1: function (offsetX, offsetY) {
+    console.log('第一张图片不需翻页动画  AnimationN1');
     // 动画
     var animation = wx.createAnimation({
       duration: 500,
@@ -388,6 +343,7 @@ Page({
 
   // 第二张图片不需翻页动画
   AnimationN2: function (offsetX, offsetY) {
+    console.log('第二张图片不需翻页动画  AnimationN2');
     // 动画
     var animation = wx.createAnimation({
       duration: 500,
@@ -407,38 +363,6 @@ Page({
     });
   },
 
-
-
-
-
-
-
-
-
-
-  //点击图片进入详情页面
-  like: function (e) {
-
-    var List = this.data.cardInfoList[likeOneOrTwo];
-
-    // 判断like的图片是否有数值
-    if (this.data.cardInfoList.length == 0 && typeof List == 'undefined' || List.cardUrl == "") {
-      wx.showToast({
-        title: '暂无图片信息',
-        icon: 'success',
-        duration: 2000
-      })
-    } else {
-      wx.navigateTo({
-        url: '../like/like?id=' + List.id + '&cardUrl=' + List.cardUrl
-      });
-    }
-  },
-
-
-
-
-
   // 加载数据
   //temp从ALL取出的数据
   //cardInfoList:temp;将ALL取出的数据放入以供显示
@@ -446,75 +370,7 @@ Page({
   //ballTop2、ballLeft2   第二张初始图片位置
   //index1:6,index2:4,    两张图片初始的z-index
 
-  onLoad: function () {
-    var that = this;
 
-    // 请求服务器数据
-    // wx.request({
-    //   url: 'https://service.woyao.huoxingwan.com',
-    //   data: {},
-    //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-    //   // header: {}, // 设置请求的 header
-    //   success: function(res){
-    //     // success
-    //     console.log(res+"222");
-    //     // that.setData({
-    //       // All:res中的数组资源
-    //     // })
-    //   },
-    //   fail: function(res) {
-    //     // fail
-    //   },
-    //   complete: function(res) {
-    //     // complete
-    //   }
-    // })
-
-
-
-
-    //调用应用实例的方法获取全局数据
-    // 创建一个临时数组 ,用于加载值(2个)
-    allCount = that.data.All.length;
-    var temp = new Array();
-    for (let i = 0; i < 2; i++) {
-      var add = that.data.All.shift();
-      temp.push(add);
-    }
-
-    console.log(that.data.All.length);
-    console.log(temp);
-    that.setData({
-      cardInfoList: temp,
-
-
-      ballTop: 62,
-      ballLeft: 76,
-      ballTop2: 62,
-      ballLeft2: 76,
-      index1: 6,
-      index2: 4,
-
-    })
-
-
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      });
-    });
-    wx.getSystemInfo({
-      success: function (res) {
-        // success
-        that.setData({
-          screenHeight: res.windowHeight,
-          screenWidth: res.windowWidth,
-        })
-
-      }
-    })
-  }
 })
 
 
