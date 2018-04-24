@@ -25,17 +25,17 @@ Page({
   onLoad: function () {
     var that = this;
     that.getInfo();
-    that.setBackImage('dawn');
+    that.setBackImage('daytime');
 
 
   },
 
-  getInfo: function (){
+  getInfo: function () {
     var that = this;
     var Info = Bmob.Object.extend("Info");
     var query = new Bmob.Query(Info);
     query.first({
-      success: function(object) {
+      success: function (object) {
         // 查询成功
         var grow = object.get('grow');
         var mood = object.get('mood');
@@ -46,7 +46,7 @@ Page({
           mFood: food,
         })
       },
-      error: function(error) {
+      error: function (error) {
         console.log("查询失败: " + error.code + " " + error.message);
       }
     });
@@ -92,9 +92,14 @@ Page({
     })
   },
 
-  //点击狗狗
+  //点击狗狗TODO
   dogTap: function () {
     console.log('点击了狗狗');
+    var that = this;
+    var number = that.randomNum(0,14);
+    that.setData({
+      dogSrc: '../../images/dog/happy/' + number + '.png'
+    })
   },
 
   //获取输入文字
@@ -127,6 +132,21 @@ Page({
       })
 
   },
+
+  //生成从minNum到maxNum的随机数
+  randomNum: function (minNum, maxNum) {
+    switch (arguments.length) {
+      case 1:
+        return parseInt(Math.random() * minNum + 1, 10);
+        break;
+      case 2:
+        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+        break;
+      default:
+        return 0;
+        break;
+    }
+  }
 
 
 })
