@@ -48,6 +48,7 @@
 
 
   <view class="operate-area">
+      <view>{{mContent}}</view>
   </view>
 
 </view>
