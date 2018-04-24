@@ -50,14 +50,16 @@ Page({
                 title: title,
                 cardUrl: cardUrl,
                 content: content,
+                isUnLock : isUnLock
               }
             } else {
               //TODO 用锁图片替代
               var card = {
                 id: id,
                 title: '???',
-                cardUrl: cardUrl,
+                cardUrl: '../../images/test/unLockHeart.png',
                 content: '',
+                isUnLock : isUnLock
               }
             }
 
@@ -150,7 +152,7 @@ Page({
   //moveX,moveY用于锁定图片中点位置
   //ballLeft由于是rpx所以*2
   touchmove: function (event) {
-    if (this.data.isEnd) {
+    if (this.data.isEnd||!this.data.cardInfoList[0].isUnLock) {
       return;
     }
     console.log('滑动第一张的移动事件touchmove');
@@ -170,7 +172,7 @@ Page({
 
   // 第一张移动结束处理动画
   touchend: function (event) {
-    if (this.data.isEnd) {
+    if (this.data.isEnd||!this.data.cardInfoList[0].isUnLock) {
       return;
     }
     console.log('第一张移动结束处理动画touchend');
@@ -188,7 +190,7 @@ Page({
 
   // 第一张左滑动右滑动动画
   Animation: function (translateXX) {
-    if (this.data.isEnd) {
+    if (this.data.isEnd||!this.data.cardInfoList[0].isUnLock) {
       return;
     }
     console.log('第一张左滑动右滑动动画  Animation');
