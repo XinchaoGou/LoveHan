@@ -1,5 +1,8 @@
 /* pages/cards/cards.wxss */
-
+page{
+  height:100%;
+  width:100%;
+}
 /*这个必须保留*/
 .container {
   height: 100%;
@@ -10,18 +13,16 @@
   justify-content: space-between;
   box-sizing: border-box;
   overflow-x: hidden;
+  background: -webkit-gradient(linear,left top,right bottom,from(rgba(133,149,165,1)),color-stop(50%,rgba(188,204,220,1)),color-stop(70%,rgba(234,206,202,1)),to(rgba(246,182,180,1)));
 }
 
 .card_wrap {
-  background: #f2f2f6;
-  position: relative;
   width: 100%;
-  height: 100%;
+  position: relative;
 }
 .card_wrap .card_item {
   position: absolute;
   width: 80%;
-
 }
 
 .card_wrap .card_item.card2 {
@@ -91,22 +92,16 @@
 }
 .card_info_other{
     height: 60rpx;
-    background: ghostwhite;
+    background: goastwhite;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    box-shadow: 6px 8px 50px 10px #ccc;
-
+    box-shadow: 0px 5px 20px 10px rgba(246,182,180,0.2);
 }
-
-
-
-
-
 .operate-area {
   margin:0 auto;
   margin-top: 1030rpx;
   text-align: center;
-  padding-bottom: 10rpx;
+  padding-bottom: 50rpx;
 }
 /*.operate-area view{
   display: inline-block;

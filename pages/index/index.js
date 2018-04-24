@@ -6,7 +6,7 @@ Page({
   data: {
     dawn: false,
     daytime:false,
-    dusk: true,
+    dusk: false,
     bgcolor: "#b2b2b2"
   },
   //事件处理函数

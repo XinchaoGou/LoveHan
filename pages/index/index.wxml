@@ -9,7 +9,7 @@
     </view>
     <view class="section">
       <text class="iconfont">心情值</text>
-      <view class="img2" />
+      <image class="heart" src="../../images/test/heart1.png"/>
       <text class="iconfont">049</text>
     </view>
     <view class="section">
