@@ -6,11 +6,11 @@ var Bmob = require("../../utils/bmob.js");
 Page({
   data: {
     dawn: false,
-    daytime:false,
-    dusk: true,
+    daytime:true,
+    dusk: false,
 
     bgcolor: "#b2b2b2",
-
+    fontcolor:"#535353",
     loveWords: '',
     mGrow: 4,
     mMood: 25,
@@ -24,7 +24,7 @@ Page({
 
   onLoad: function () {
    var that = this;
-   that.setBackImage('dawn');
+   that.setBackImage('dusk');
 
 
   },
@@ -95,7 +95,8 @@ Page({
     })
   else 
     this.setData({
-      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(15,48,94,1)),color-stop(50%,rgba(20,46,96,1)),color-stop(70%,rgba(8,26,66,1)),to(rgba(0,14,40,1)))"
+      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(15,48,94,1)),color-stop(50%,rgba(20,46,96,1)),color-stop(70%,rgba(8,26,66,1)),to(rgba(0,14,40,1)))",
+      fontcolor: "#f6b6b4"
     })
 
   },

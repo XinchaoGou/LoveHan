@@ -3,40 +3,41 @@
 
   <view class="header-left">
     <view class="section">
-      <text class="iconfont">成长值</text>
+      <text class="iconfont" style="color:{{fontcolor}};">成长值</text>
       <image class="heart" src="../../images/test/feet1.png" />
-      <text class="iconfont">{{mGrow}}</text>
+      <text class="iconfont" style="color:{{fontcolor}};">{{mGrow}}</text>
     </view>
     <view class="section">
-      <text class="iconfont">心情值</text>
+      <text class="iconfont" style="color:{{fontcolor}};">心情值</text>
 
       <image class="heart" src="../../images/test/heart1.png" />
-      <text class="iconfont">{{mMood}}</text>
+      <text class="iconfont" style="color:{{fontcolor}};">{{mMood}}</text>
 
     </view>
     <view class="section">
-      <text class="iconfont">食物量</text>
+      <text class="iconfont" style="color:{{fontcolor}};">食物量</text>
       <image class="heart" src="../../images/test/food1.png" />
-      <text class="iconfont">{{mFood}}</text>
+      <text class="iconfont" style="color:{{fontcolor}};">{{mFood}}</text>
     </view>
   </view>
 
   <view class="img-right" bindtap="toCard">
     <image class="photo" src="../../images/test/photo-32.png" />
-    <view class="iconfont fontcolor">相册</view>
+    <image class="photo" src="../../images/test/photo-32.png" />
+    <view class="iconfont fontcolor" style="color:{{fontcolor}};">相册</view>
   </view>
 
   <view class="textbulb">
     <image class="bulb" src="../../images/test/talkingbulb1.png" />
-    <text class="sentence">{{dogSentence}}~</text>
+    <text class="sentence" style="color:{{fontcolor}};">{{dogSentence}}~</text>
   </view>
 
 
   <image class="dog" src="{{dogSrc}}" />
 
   <view class="footer">
-    <view class="footer1">
-      <input placeholder=" 快来喂我吧~" placeholder-class="footer1holder" value="{{loveWords}}" bindinput="bindInput" />
+    <view class="footer1" style="color:{{fontcolor}};">
+      <input placeholder=" 快来喂我吧~" placeholder-class="footer1holder" placeholder-style="color:{{fontcolor}};" value="{{loveWords}}" bindinput="bindInput" />
     </view>
     <view class="footer2">
       <image class="dogbone" bindtap="dogBoneTap" src="../../images/test/dogbon.png" />
