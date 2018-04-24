@@ -8,7 +8,7 @@ Page({
     /*dawn: false,
     daytime:true,
     dusk: false,*/
-
+    condition: false,
     bgcolor: "#b2b2b2",
     fontcolor:"#535353",
     loveWords: '',
@@ -25,7 +25,7 @@ Page({
   onLoad: function () {
     var that = this;
     that.getInfo();
-    that.setBackImage('dawn');
+    that.setBackImage('daytime');
 
 
   },
@@ -111,20 +111,27 @@ Page({
 
     if (time == 'dawn')
     this.setData({
-      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(133,149,165,1)),color-stop(50%,rgba(188,204,220,1)),color-stop(70%,rgba(234,206,202,1)),to(rgba(246,182,180,1)))"
+      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(133,149,165,1)),color-stop(50%,rgba(188,204,220,1)),color-stop(70%,rgba(234,206,202,1)),to(rgba(246,182,180,1)))",
+      fontcolor: "#535353",
+      condition: "false"
     })
   else if (time == 'daytime')
     this.setData({
-      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(255,255,255,1)),color-stop(30%,rgba(141,180,198,0.8)),color-stop(40%,rgba(254,229,102,0.2)),to(rgba(140,156,9,1)))"
+      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(255,255,255,1)),color-stop(30%,rgba(141,180,198,0.8)),color-stop(40%,rgba(254,229,102,0.2)),to(rgba(140,156,9,1)))",
+      fontcolor: "#535353",
+      condition: "false"
     })
   else if (time == 'dusk')
     this.setData({
-      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(31,104,191,1)),color-stop(30%,rgba(31,104,191,0.6)),color-stop(60%,rgba(254,108,107,1)),to(rgba(254,238,190,1)))"
+      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(31,104,191,1)),color-stop(30%,rgba(31,104,191,0.6)),color-stop(60%,rgba(254,108,107,1)),to(rgba(254,238,190,1)))",
+      fontcolor: "#535353",
+      condition: "false"
     })
   else 
     this.setData({
       bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(15,48,94,1)),color-stop(50%,rgba(20,46,96,1)),color-stop(70%,rgba(8,26,66,1)),to(rgba(0,14,40,1)))",
-      fontcolor: "#f6b6b4"
+      fontcolor: "#f6b6b4",
+      condition: "true"
     })
 
   },

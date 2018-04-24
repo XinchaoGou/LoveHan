@@ -22,8 +22,12 @@
   </view>
 
   <view class="img-right" bindtap="toCard">
-    <image class="photo" src="../../images/test/photo-32.png" />
-    <image class="photo" src="../../images/test/photo-32.png" />
+    <block wx:if="{{condition}}">
+      <image class="photo" src="../../images/test/photo-32.png" />
+    </block>
+    <block wx:else>c
+      <image class="photo" src="../../images/test/photo-32-1.png" />
+    </block>
     <view class="iconfont fontcolor" style="color:{{fontcolor}};">相册</view>
   </view>
 
@@ -33,7 +37,7 @@
   </view>
 
 
-  <image class="dog" src="{{dogSrc}}" bindtap="dogTap"/>
+  <image class="dog" src="{{dogSrc}}" bindtap="dogTap" />
 
   <view class="footer">
     <view class="footer1" style="color:{{fontcolor}};">
