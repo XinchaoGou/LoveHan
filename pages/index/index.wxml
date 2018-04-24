@@ -9,13 +9,10 @@
     </view>
     <view class="section">
       <text class="iconfont">心情值</text>
-<<<<<<< HEAD
-      <view class="img2" />
+
+      <image class="heart" src="../../images/test/heart1.png" />
       <text class="iconfont">{{mMood}}</text>
-=======
-      <image class="heart" src="../../images/test/heart1.png"/>
-      <text class="iconfont">049</text>
->>>>>>> by_yining
+
     </view>
     <view class="section">
       <text class="iconfont">食物量</text>
@@ -33,7 +30,7 @@
 
   <view class="footer">
     <view class="footer1">
-      <input placeholder=" 快来喂我吧~" placeholder-class="footer1holder" value="{{loveWords}}" bindinput="bindInput"/>
+      <input placeholder=" 快来喂我吧~" placeholder-class="footer1holder" value="{{loveWords}}" bindinput="bindInput" />
     </view>
     <image class="dogbone" bindtap="dogBoneTap" src="../../images/test/dogfood1.png" />
   </view>
