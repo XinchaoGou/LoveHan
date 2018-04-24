@@ -16,7 +16,7 @@ page {
 .header-left{
   float:left;
   display:flex;
-  width:40%;
+  width:50%;
   flex-direction:column;
   justify-content: space-between;
   align-items:flex-start;
@@ -27,7 +27,8 @@ page {
   background:-webkit-linear-gradient(bottom,rgba(0,0,0,0.5),rgba(0,0,0,1))
 }
 .section{
-  width:300rpx;
+  margin-bottom:20rpx;
+  width:100%;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
@@ -45,11 +46,10 @@ page {
   height:60rpx;
   background-color: pink;
 }
-.block2{
-  margin-top:120rpx;
-  width:280rpx;
-  height:180rpx;
-  background-color: pink;
+.bulb{
+  margin-left:45%;
+  width:400rpx;
+  height:320rpx;
 }
 .footer{
   width:90%;
@@ -62,9 +62,28 @@ page {
   align-items:center;
 }
 .footer1{
-  background-color: pink;
+  width:500rpx;
+  height:70rpx;
+  border:4rpx solid #535353;
+  border-radius:10rpx;
+  display:flex;
+  align-items: center;
+  font-family:DFPShaoNvW5-GB;
+  font-size:15pt;
 }
-
+.dogbone{
+  width:150rpx;
+  height:100rpx;
+}
+.footer1holder{
+  font-family:DFPShaoNvW5-GB;
+  font-size:15pt;
+}
 .iconfont{
+  font-family:DFPShaoNvW5-GB;
+  font-size:15pt;
+}
+@font-face{
   font-family:'DFPShaoNvW5-GB';
+  src:url('http://bmob-cdn-18384.b0.upaiyun.com/2018/04/24/1d90e29f40e1e6de80b174428dfe244e.ttf');
 }

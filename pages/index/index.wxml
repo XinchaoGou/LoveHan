@@ -3,32 +3,34 @@
 
   <view class="header-left">
     <view class="section">
-      <text>成长值</text>
+      <text class="iconfont">成长值</text>
       <view class="img1" />
-      <text>036</text>
+      <text class="iconfont">036</text>
     </view>
     <view class="section">
-      <text>心情值</text>
+      <text class="iconfont">心情值</text>
       <view class="img2" />
-      <text>049</text>
+      <text class="iconfont">049</text>
     </view>
     <view class="section">
-      <text>食物量</text>
+      <text class="iconfont">食物量</text>
       <view class="img3" />
-      <text>050</text>
+      <text class="iconfont">050</text>
     </view>
   </view>
 
   <view class="img-right">
     <view class="block1">1</view>
-    <view class="block2">2</view>
   </view>
+
+  <image class="bulb" src="../../images/test/talkingbulb1.png" />
+
 
   <view class="footer">
     <view class="footer1">
-      <input placeholder="快来喂我吧~" auto-focus/>
+      <input placeholder=" 快来喂我吧~" placeholder-class="footer1holder" auto-focus/>
     </view>
-    <view class="iconfont">2</view>
+    <image class="dogbone" src="../../images/test/dogfood1.png" />
   </view>
 
 </view>
