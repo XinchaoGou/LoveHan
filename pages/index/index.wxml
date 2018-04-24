@@ -5,17 +5,17 @@
     <view class="section">
       <text class="iconfont">成长值</text>
       <view class="img1" />
-      <text class="iconfont">036</text>
+      <text class="iconfont">{{mGrow}}</text>
     </view>
     <view class="section">
       <text class="iconfont">心情值</text>
       <view class="img2" />
-      <text class="iconfont">049</text>
+      <text class="iconfont">{{mMood}}</text>
     </view>
     <view class="section">
       <text class="iconfont">食物量</text>
       <view class="img3" />
-      <text class="iconfont">050</text>
+      <text class="iconfont">{{mFood}}</text>
     </view>
   </view>
 
@@ -28,9 +28,9 @@
 
   <view class="footer">
     <view class="footer1">
-      <input placeholder=" 快来喂我吧~" placeholder-class="footer1holder" auto-focus/>
+      <input placeholder=" 快来喂我吧~" placeholder-class="footer1holder" value="{{loveWords}}" bindinput="bindInput"/>
     </view>
-    <image class="dogbone" src="../../images/test/dogfood1.png" />
+    <image class="dogbone" bindtap="dogBoneTap" src="../../images/test/dogfood1.png" />
   </view>
 
 </view>

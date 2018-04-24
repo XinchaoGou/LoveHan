@@ -3,7 +3,7 @@
   <view class="card_wrap" disable-scroll="true">
 
 
-    <view class="card_item card1 " catchtouchmove="touchmove" catchtouchend="touchend" style=" z-index: {{index1}};position:absolute;top:{{ballTop}}px; left: {{ballLeft}}rpx;"
+    <view class="card_item card1 " catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend" style=" z-index: {{index1}};position:absolute;top:{{ballTop}}px; left: {{ballLeft}}rpx;"
       animation="{{animationData}}">
       <image src="{{cardInfoList[0].cardUrl}}" catchtap="like"></image>
       <view class="card_info">

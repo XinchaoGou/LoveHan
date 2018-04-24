@@ -146,7 +146,13 @@ Page({
     })
 
   },
+  /**
+   * 滑动开始TODO
+   */
+  touchstart: function (event) {
+    console.log(event);
 
+  },
   // 滑动第一张的移动事件
   //pageX,pageY,当前移动点位置
   //moveX,moveY用于锁定图片中点位置
