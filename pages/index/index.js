@@ -2,12 +2,10 @@
 //获取应用实例
 const app = getApp()
 var Bmob = require("../../utils/bmob.js");
+var util = require('../../utils/util.js');
 
 Page({
   data: {
-    /*dawn: false,
-    daytime:true,
-    dusk: false,*/
 
     bgcolor: "#b2b2b2",
     fontcolor:"#535353",
@@ -17,7 +15,7 @@ Page({
     mFood: 0,
 
     dogSrc: '../../images/dog/happy/12.png',
-    dogSentence: '哈喽，我是你的狗狗',
+    dogSentence: '晗晗老婆！4周年快乐！',
 
   },
 
@@ -25,7 +23,7 @@ Page({
   onLoad: function () {
     var that = this;
     that.getInfo();
-    that.setBackImage('daytime');
+    that.setBackImage('night');
 
 
   },
@@ -130,10 +128,6 @@ Page({
       success: function (result) {
         // 添加成功，返回成功之后的objectId（注意：返回的属性名字是id，不是objectId），你还可以在Bmob的Web管理后台看到对应的数据
         console.log("创建成功");
-        // var food = that.data.mFood;
-        // that.setData({
-        //   mFood: food + 1
-        // })
         that.changeStatus();
         that.addToCloud('food');
       },
@@ -154,10 +148,6 @@ Page({
   dogTap: function () {
     var that = this;
     that.changeStatus();
-    // var mood = that.data.mMood;
-    // that.setData({
-    //   mMood: mood + 1
-    // })
     that.addToCloud('mood');
   },
 
