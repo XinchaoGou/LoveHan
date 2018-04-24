@@ -32,10 +32,12 @@ Page({
 
   getInfo: function () {
     var that = this;
-    var Info = Bmob.Object.extend("Info");
-    var query = new Bmob.Query(Info);
-    query.first({
+    //查询用户收藏列表
+    var User = Bmob.Object.extend("_User");
+    var query = new Bmob.Query(User);
+    query.get(Bmob.User.current().id, {
       success: function (object) {
+        // 查询成功
         // 查询成功
         var grow = object.get('grow');
         var mood = object.get('mood');
@@ -45,9 +47,11 @@ Page({
           mMood: mood,
           mFood: food,
         })
+
       },
-      error: function (error) {
-        console.log("查询失败: " + error.code + " " + error.message);
+      error: function (object, error) {
+        // 查询失败
+        console.log("查询当前用户失败");
       }
     });
   },
@@ -103,9 +107,9 @@ Page({
     })
   },
 
-  changeStatus: function (){
+  changeStatus: function () {
     var that = this;
-    var number = that.randomNum(0,14);
+    var number = that.randomNum(0, 14);
     that.setData({
       dogSrc: '../../images/dog/happy/' + number + '.png'
     })
