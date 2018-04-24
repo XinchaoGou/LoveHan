@@ -163,9 +163,9 @@ Page({
 
         ballTop: 62,
         ballLeft: 76,
-        index1: 4,
+        // index1: 4,
         // percent2: 100,
-        index2: 6,
+        // index2: 6,
       })
     }, 720);
     // setTimeout(function () {
