@@ -40,7 +40,7 @@
     </view>
     <view class="footer2">
       <image class="dogbone" bindtap="dogBoneTap" src="../../images/test/dogbon.png" />
-      <text class="iconfont1">喂给它</text>
+      <text class="dogbonefont">喂给它</text>
     </view>
   </view>
 
