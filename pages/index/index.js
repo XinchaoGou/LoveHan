@@ -61,6 +61,58 @@ Page({
     wx.navigateTo({ url: '../cards/cards' })
   },
 
+  //同步数据到服务器
+  addToCloud: function (value){
+    var that = this;
+    //查询用户收藏列表
+    var User = Bmob.Object.extend("_User");
+    var query = new Bmob.Query(User);
+    query.get(Bmob.User.current().id, {
+      success: function (object) {
+        var food = that.data.mFood;
+        var mood = that.data.mMood;
+
+        if (value == 'food') {
+          object.set('food', food + 1);
+          that.setData({
+            mFood: food + 1
+          })
+        } else if (value == 'mood') {
+          object.set('mood', mood + 1);
+          that.setData({
+            mMood: mood + 1
+          })
+        }
+        object.save();
+        // if (value == 'food') {
+          
+        //   that.setData({
+        //     mFood: food + 1
+        //   })
+        // } else if (value == 'mood') {
+          
+        //   that.setData({
+        //     mMood: mood + 1
+        //   })
+        // }
+
+        // 查询成功
+        // var grow = object.get('grow');
+        // var mood = object.get('mood');
+        // var food = object.get('food');
+        // that.setData({
+        //   mGrow: grow,
+        //   mMood: mood,
+        //   mFood: food,
+        // })
+
+      },
+      error: function (object, error) {
+        // 查询失败
+        console.log("查询当前用户失败");
+      }
+    });
+  },
 
   //点击狗骨头
   dogBoneTap: function () {
@@ -78,11 +130,12 @@ Page({
       success: function (result) {
         // 添加成功，返回成功之后的objectId（注意：返回的属性名字是id，不是objectId），你还可以在Bmob的Web管理后台看到对应的数据
         console.log("创建成功");
-        var food = that.data.mFood;
-        that.setData({
-          mFood: food + 1
-        })
+        // var food = that.data.mFood;
+        // that.setData({
+        //   mFood: food + 1
+        // })
         that.changeStatus();
+        that.addToCloud('food');
       },
       error: function (result, error) {
         // 添加失败
@@ -101,10 +154,11 @@ Page({
   dogTap: function () {
     var that = this;
     that.changeStatus();
-    var mood = that.data.mMood;
-    that.setData({
-      mMood: mood + 1
-    })
+    // var mood = that.data.mMood;
+    // that.setData({
+    //   mMood: mood + 1
+    // })
+    that.addToCloud('mood');
   },
 
   changeStatus: function () {
