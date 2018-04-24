@@ -24,8 +24,10 @@ Page({
   onLoad: function () {
     var that = this;
     that.getInfo();
-    that.setBackImage('daytime');
-
+    var hour = new Date().getHours();
+    console.log('当前时间为' + hour);
+    
+    that.setBackImage();
 
   },
 
@@ -170,7 +172,16 @@ Page({
   },
 
   //设置图片背景
-  setBackImage: function (time) {
+  setBackImage: function () {
+    var time = '';
+    var hour = new Date().getHours();
+    if (hour >= 7 && hour <= 10) {
+      time = 'dawn'
+    } else if (hour >= 11 && hour <= 18){
+      time = 'daytime'
+    } else if (hour >= 19 && hour <= 22){
+      time = 'dusk'
+    }
 
     if (time == 'dawn')
     this.setData({
