@@ -21,18 +21,18 @@
     </view>
   </view>
 
-  <view class="img-right" catchtap="toCard">
+  <view class="img-right" bindtap="toCard">
     <image class="photo" src="../../images/test/photo-32.png" />
     <view class="iconfont fontcolor">相册</view>
   </view>
 
   <view class="textbulb">
     <image class="bulb" src="../../images/test/talkingbulb1.png" />
-    <text class="sentence">哈喽，我是你的狗狗~</text>
+    <text class="sentence">{{dogSentence}}~</text>
   </view>
 
 
-  <image class="dog" src="../../images/dog/happy/12.png" />
+  <image class="dog" src="{{dogSrc}}" />
 
   <view class="footer">
     <view class="footer1">
