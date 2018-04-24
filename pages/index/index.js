@@ -5,9 +5,9 @@ var Bmob = require("../../utils/bmob.js");
 
 Page({
   data: {
-    dawn: true,
+    dawn: false,
     daytime:false,
-    dusk: false,
+    dusk: true,
 
     bgcolor: "#b2b2b2",
 
@@ -81,7 +81,7 @@ Page({
     })
   else if (this.data.dusk)
     this.setData({
-      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(31,104,191,1)),color-stop(20%,rgba(31,104,191,0.8)),color-stop(40%,rgba(254,108,107,1)),color-stop(60%,rgba(254,238,190,1)),color-stop(75%,rgba(49,21,24,0.5)),to(rgba(49,21,24,1)))"
+      bgcolor: "-webkit-gradient(linear,left top,right bottom,from(rgba(31,104,191,1)),color-stop(30%,rgba(31,104,191,0.6)),color-stop(60%,rgba(254,108,107,1)),to(rgba(254,238,190,1)))"
     })
   else 
     this.setData({
