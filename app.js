@@ -1,4 +1,7 @@
 //app.js
+// 初始化Bmob
+require('utils/initial.js');
+
 App({
   onLaunch: function () {
     // 展示本地存储能力
