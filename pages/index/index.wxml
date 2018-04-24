@@ -32,14 +32,14 @@
   </view>
 
 
-  <image class="dog" src="{{dogSrc}}" />
+  <image class="dog" src="{{dogSrc}}" bindtap="dogTap"/>
 
   <view class="footer">
     <view class="footer1">
       <input placeholder=" 快来喂我吧~" placeholder-class="footer1holder" value="{{loveWords}}" bindinput="bindInput" />
     </view>
-    <view class="footer2">
-      <image class="dogbone" bindtap="dogBoneTap" src="../../images/test/dogbon.png" />
+    <view class="footer2" bindtap="dogBoneTap">
+      <image class="dogbone" src="../../images/test/dogbon.png" />
       <text class="dogbonefont">喂给它</text>
     </view>
   </view>
