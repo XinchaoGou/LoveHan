@@ -3,7 +3,11 @@
   <view class="card_wrap" disable-scroll="true">
 
 
+<<<<<<< HEAD
     <view class="card_item card1 " catchtouchstart="touchstart" catchtouchmove="touchmove" catchtouchend="touchend" style=" z-index: {{index1}};position:absolute;top:{{ballTop}}px; left: {{ballLeft}}rpx;"
+=======
+    <view class="card_item card1" catchtouchmove="touchmove" catchtouchend="touchend" style=" z-index: {{index1}};position:absolute;top:{{ballTop}}px; left: {{ballLeft}}rpx;"
+>>>>>>> by_yining
       animation="{{animationData}}">
       <image src="{{cardInfoList[0].cardUrl}}" catchtap="like"></image>
       <view class="card_info">
@@ -14,7 +18,7 @@
       </view>
     </view>
 
-    <view class="card_item card1 " style=" z-index: {{index2}};position:absolute;top:{{ballTop2}}px; left: {{ballLeft2}}rpx;">
+    <view class="card_item card1" style="z-index: {{index2}};position:absolute;top:{{ballTop2}}px; left: {{ballLeft2}}rpx;">
       <image src="{{cardInfoList[1].cardUrl}}"></image>
       <view class="card_info">
         <view class="info_top">

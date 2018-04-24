@@ -8,6 +8,7 @@ Page({
     dawn: true,
     daytime:false,
     dusk: false,
+<<<<<<< HEAD
 
     bgcolor: "#b2b2b2",
 
@@ -58,6 +59,9 @@ Page({
     that.setData({
       loveWords: ''
     })
+=======
+    bgcolor: "#b2b2b2"
+>>>>>>> by_yining
   },
 
   //获取输入文字

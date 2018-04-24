@@ -26,6 +26,10 @@ page {
   height:40rpx;
   background:-webkit-linear-gradient(bottom,rgba(0,0,0,0.5),rgba(0,0,0,1))
 }
+.heart{
+  width:50rpx;
+  height:50rpx;
+}
 .section{
   margin-bottom:20rpx;
   width:100%;
