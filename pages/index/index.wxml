@@ -26,14 +26,19 @@
     <view class="iconfont fontcolor">相册</view>
   </view>
 
-  <image class="bulb" src="../../images/test/talkingbulb1.png" />
+  <view class="textbulb">
+    <image class="bulb" src="../../images/test/talkingbulb1.png" />
+    <text class="sentence">哈喽，我是你的狗狗~</text>
+  </view>
 
+
+  <image class="dog" src="../../images/dog/happy/12.png" />
 
   <view class="footer">
     <view class="footer1">
       <input placeholder=" 快来喂我吧~" placeholder-class="footer1holder" value="{{loveWords}}" bindinput="bindInput" />
     </view>
-    <view class="footer2"> 
+    <view class="footer2">
       <image class="dogbone" bindtap="dogBoneTap" src="../../images/test/dogbon.png" />
       <text class="iconfont1">喂给它</text>
     </view>
