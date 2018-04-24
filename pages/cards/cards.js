@@ -225,9 +225,14 @@ Page({
 
     this.setData({
       animationData: this.animation.export(),
-      ballTop: 62,
-      ballLeft: 76,
     });
+
+    setTimeout(() => {
+      this.setData({
+        ballTop: 62,
+        ballLeft: 76,
+      })
+    }, 80);
   },
 
   // 加载数据
