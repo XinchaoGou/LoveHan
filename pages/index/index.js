@@ -78,6 +78,7 @@ Page({
         that.setData({
           mFood: food + 1
         })
+        that.changeStatus();
       },
       error: function (result, error) {
         // 添加失败
@@ -94,7 +95,15 @@ Page({
 
   //点击狗狗TODO
   dogTap: function () {
-    console.log('点击了狗狗');
+    var that = this;
+    that.changeStatus();
+    var mood = that.data.mMood;
+    that.setData({
+      mMood: mood + 1
+    })
+  },
+
+  changeStatus: function (){
     var that = this;
     var number = that.randomNum(0,14);
     that.setData({
