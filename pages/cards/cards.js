@@ -56,7 +56,7 @@ Page({
               //TODO 用锁图片替代
               var card = {
                 id: id,
-                title: '???',
+                title: '待解锁',
                 cardUrl: '../../images/test/unLockHeart.png',
                 content: '',
                 isUnLock : isUnLock

@@ -2,12 +2,11 @@
 //获取应用实例
 const app = getApp()
 var Bmob = require("../../utils/bmob.js");
+var util = require('../../utils/util.js');
 
 Page({
   data: {
-    /*dawn: false,
-    daytime:true,
-    dusk: false,*/
+
     condition: false,
     bgcolor: "#b2b2b2",
     fontcolor:"#535353",
@@ -17,7 +16,7 @@ Page({
     mFood: 0,
 
     dogSrc: '../../images/dog/happy/12.png',
-    dogSentence: '哈喽，我是你的狗狗',
+    dogSentence: '晗晗老婆！4周年快乐！',
 
   },
 
@@ -30,12 +29,14 @@ Page({
 
   },
 
-  getInfo: function (){
+  getInfo: function () {
     var that = this;
-    var Info = Bmob.Object.extend("Info");
-    var query = new Bmob.Query(Info);
-    query.first({
-      success: function(object) {
+    //查询用户收藏列表
+    var User = Bmob.Object.extend("_User");
+    var query = new Bmob.Query(User);
+    query.get(Bmob.User.current().id, {
+      success: function (object) {
+        // 查询成功
         // 查询成功
         var grow = object.get('grow');
         var mood = object.get('mood');
@@ -45,9 +46,11 @@ Page({
           mMood: mood,
           mFood: food,
         })
+
       },
-      error: function(error) {
-        console.log("查询失败: " + error.code + " " + error.message);
+      error: function (object, error) {
+        // 查询失败
+        console.log("查询当前用户失败");
       }
     });
   },
@@ -57,6 +60,58 @@ Page({
     wx.navigateTo({ url: '../cards/cards' })
   },
 
+  //同步数据到服务器
+  addToCloud: function (value){
+    var that = this;
+    //查询用户收藏列表
+    var User = Bmob.Object.extend("_User");
+    var query = new Bmob.Query(User);
+    query.get(Bmob.User.current().id, {
+      success: function (object) {
+        var food = that.data.mFood;
+        var mood = that.data.mMood;
+
+        if (value == 'food') {
+          object.set('food', food + 1);
+          that.setData({
+            mFood: food + 1
+          })
+        } else if (value == 'mood') {
+          object.set('mood', mood + 1);
+          that.setData({
+            mMood: mood + 1
+          })
+        }
+        object.save();
+        // if (value == 'food') {
+          
+        //   that.setData({
+        //     mFood: food + 1
+        //   })
+        // } else if (value == 'mood') {
+          
+        //   that.setData({
+        //     mMood: mood + 1
+        //   })
+        // }
+
+        // 查询成功
+        // var grow = object.get('grow');
+        // var mood = object.get('mood');
+        // var food = object.get('food');
+        // that.setData({
+        //   mGrow: grow,
+        //   mMood: mood,
+        //   mFood: food,
+        // })
+
+      },
+      error: function (object, error) {
+        // 查询失败
+        console.log("查询当前用户失败");
+      }
+    });
+  },
 
   //点击狗骨头
   dogBoneTap: function () {
@@ -74,10 +129,8 @@ Page({
       success: function (result) {
         // 添加成功，返回成功之后的objectId（注意：返回的属性名字是id，不是objectId），你还可以在Bmob的Web管理后台看到对应的数据
         console.log("创建成功");
-        var food = that.data.mFood;
-        that.setData({
-          mFood: food + 1
-        })
+        that.changeStatus();
+        that.addToCloud('food');
       },
       error: function (result, error) {
         // 添加失败
@@ -92,9 +145,19 @@ Page({
     })
   },
 
-  //点击狗狗
+  //点击狗狗TODO
   dogTap: function () {
-    console.log('点击了狗狗');
+    var that = this;
+    that.changeStatus();
+    that.addToCloud('mood');
+  },
+
+  changeStatus: function () {
+    var that = this;
+    var number = that.randomNum(0, 14);
+    that.setData({
+      dogSrc: '../../images/dog/happy/' + number + '.png'
+    })
   },
 
   //获取输入文字
@@ -135,6 +198,21 @@ Page({
     })
 
   },
+
+  //生成从minNum到maxNum的随机数
+  randomNum: function (minNum, maxNum) {
+    switch (arguments.length) {
+      case 1:
+        return parseInt(Math.random() * minNum + 1, 10);
+        break;
+      case 2:
+        return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+        break;
+      default:
+        return 0;
+        break;
+    }
+  }
 
 
 })
