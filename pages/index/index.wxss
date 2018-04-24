@@ -24,12 +24,6 @@ page {
   align-items: flex-start;
 }
 
-.img1, .img2, .img3 {
-  width: 60rpx;
-  height: 40rpx;
-  background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1));
-}
-
 .heart {
   width: 50rpx;
   height: 50rpx;
@@ -54,8 +48,10 @@ page {
 }
 
 .img-right {
+  z-index:20;
   width: 50%;
-  float: right;
+  position:absolute;
+  right:20rpx;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
