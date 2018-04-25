@@ -62,7 +62,7 @@ Page({
     wx.navigateTo({ url: '../cards/cards' })
   },
 
-  //同步数据到服务器
+  //同步数据到服务器TODO
   addToCloud: function (value){
     var that = this;
     //查询用户收藏列表
@@ -72,6 +72,22 @@ Page({
       success: function (object) {
         var food = that.data.mFood;
         var mood = that.data.mMood;
+        if (food >=  100 && value == 'food') {
+          wx.showToast({
+            title: '晗晗老婆！我饱了！',
+            icon: 'none',
+            duration: 2000
+          })
+          return
+        }
+        if (mood >=  100 && value == 'mood') {
+          wx.showToast({
+            title: '晗晗老婆！我超级开心！',
+            icon: 'none',
+            duration: 2000
+          })
+          return
+        }
 
         if (value == 'food') {
           object.set('food', food + 1);
@@ -85,27 +101,6 @@ Page({
           })
         }
         object.save();
-        // if (value == 'food') {
-          
-        //   that.setData({
-        //     mFood: food + 1
-        //   })
-        // } else if (value == 'mood') {
-          
-        //   that.setData({
-        //     mMood: mood + 1
-        //   })
-        // }
-
-        // 查询成功
-        // var grow = object.get('grow');
-        // var mood = object.get('mood');
-        // var food = object.get('food');
-        // that.setData({
-        //   mGrow: grow,
-        //   mMood: mood,
-        //   mFood: food,
-        // })
 
       },
       error: function (object, error) {
